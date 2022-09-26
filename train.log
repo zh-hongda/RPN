@@ -1,0 +1,8 @@
+2022-09-26 11:42:50,405:INFO: AUPR on test set: 0.6208989954892488, using results picture at ./DDR/predicated_result/EX
+2022-09-26 11:43:37,106:INFO: AUPR on test set: 0.4990346795210978, using results picture at ./DDR/predicated_result/HE
+2022-09-26 11:44:13,451:INFO: AUPR on test set: 0.16072126906587697, using results picture at ./DDR/predicated_result/MA
+2022-09-26 11:44:48,882:INFO: AUPR on test set: 0.31110354613696417, using results picture at ./DDR/predicated_result/SE
+2022-09-26 11:47:50,210:INFO: AUPR on test set: 0.870721569082763, using results picture at ./IDRiD/predicated_result/EX
+2022-09-26 11:50:10,984:INFO: AUPR on test set: 0.6901934957265263, using results picture at ./IDRiD/predicated_result/HE
+2022-09-26 11:52:34,776:INFO: AUPR on test set: 0.5027297648609695, using results picture at ./IDRiD/predicated_result/MA
+2022-09-26 11:54:41,373:INFO: AUPR on test set: 0.748312838087359, using results picture at ./IDRiD/predicated_result/SE

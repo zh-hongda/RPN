@@ -111,8 +111,13 @@ class RPN(nn.Module):
         self.double_conv = DoubleConv(input_channel, 64)
         self.down1 = Down(64, 128)
         self.down2 = Down(128, 256)
-        self.up1 = Up(256, 128)
-        self.up2 = Up(128, 64)
+        self.down3 = Down(256, 512)
+        self.down4 = Down(512, 1024)
+
+        self.up1 = Up(1024, 512)
+        self.up2 = Up(512, 256)
+        self.up3 = Up(256, 128)
+        self.up4 = Up(128, 64)
 
         self.tail1_SE_Block = SE_Block(64)
         self.tail1_final_conv = nn.Conv2d(64, output_channel, kernel_size=1)
@@ -131,10 +136,14 @@ class RPN(nn.Module):
         x = self.double_conv(x)
         down1 = self.down1(x)
         down2 = self.down2(down1)
-        up1 = self.up1(down2, down1)
-        up2 = self.up2(up1, x)
+        down3 = self.down2(down2)
+        down4 = self.down2(down3)
+        up1 = self.up1(down4, down3)
+        up2 = self.up2(up1, down2)
+        up3 = self.up2(up2, down1)
+        up4 = self.up2(up3, x)
 
-        tail1 = self.tail1_SE_Block(up2)
+        tail1 = self.tail1_SE_Block(up4)
         tail1 = self.tail1_final_conv(tail1)
         RSM = self.tail1_sigmoid(tail1)
         

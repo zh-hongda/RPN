@@ -100,10 +100,10 @@ class SE_Block(nn.Module):
         )
  
     def forward(self, x):
-        b, c, _, _ = x.size()
-        y = self.avg_pool(x).view(b, c) # squeeze操作
-        y = self.fc(y).view(b, c, 1, 1) # FC获取通道注意力权重，是具有全局信息的
-        return x * y.expand_as(x) # 注意力作用每一个通道上
+        batch, channle, _, _ = x.size()
+        y = self.avg_pool(x).view(batch, channle)
+        attention = self.fc(y).view(batch, channle, 1, 1)
+        return x * attention.expand_as(x)
 
 class RPN(nn.Module):
     def __init__(self, input_channel, output_channel):
